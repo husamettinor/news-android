@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
+import android.widget.Toast
 import com.tykesoft.news.R
 import com.tykesoft.news.adapter.NewsAdapter
 import com.tykesoft.news.model.News
@@ -26,6 +27,7 @@ class NewsActivity : AppCompatActivity() {
         newsRecyclerView.adapter = newsRecyclerViewAdapter
         fetchNews()
         swipeContainer.setOnRefreshListener { fetchNews() }
+
     }
 
     private fun fetchNews() {
@@ -35,6 +37,9 @@ class NewsActivity : AppCompatActivity() {
                 .getArticles()
                 .enqueue(object : Callback<List<News>> {
                     override fun onFailure(call: Call<List<News>>?, t: Throwable?) {
+                        swipeContainer.isRefreshing = false
+                        Toast.makeText(this@NewsActivity, R.string.service_error, Toast.LENGTH_LONG)
+                                .show()
                         Log.d("DEBUG", "Fetch news error: " + t.toString())
                     }
 

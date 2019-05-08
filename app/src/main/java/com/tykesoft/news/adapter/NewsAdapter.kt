@@ -1,7 +1,6 @@
 package com.tykesoft.news.adapter
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.ViewGroup
 import com.tykesoft.news.model.News
 
@@ -17,8 +16,7 @@ class NewsAdapter(private var newsList: ArrayList<News>) : RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(p0: NewsViewHolder, p1: Int) {
-        Log.i("SIZE", p1.toString())
-        p0.bindTo(newsList[p1])
+        p0.bind(newsList[p1])
     }
 
     fun clear() {

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">News</string>
+    <string name="article_image">Article image</string>
+    <string name="service_error">"Haber servisine erişilemiyor"</string>
 </resources>
